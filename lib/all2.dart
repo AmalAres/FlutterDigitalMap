@@ -33,11 +33,11 @@ class _MapsState extends State<Maps> {
   final String url2 =
       "https://api.thingspeak.com/channels/1411131/feeds.json?api_key=VPF9WGH2BOQ9H8XB&results=1";
 
-  late List data, data2, data3, data4;
-  late double curlat, curlong, latitude, longitude, latitude2, longitude2;
-  late Timer timer;
+   List data, data2, data3, data4;
+   double curlat, curlong, latitude, longitude, latitude2, longitude2;
+   Timer timer;
 
-  late Position curpos;
+   Position curpos;
 
   @override
   void initState() {
