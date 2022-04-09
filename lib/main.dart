@@ -65,8 +65,7 @@ class _MapsState extends State<Maps> {
   }
 
   getCurrentPosition() async {
-    curpos =
-        await Geolocator.getCurrentPosition(forceAndroidLocationManager: true);
+    curpos = await Geolocator.getCurrentPosition();
     print("Current position user : ${curpos.latitude},${curpos.longitude}");
   }
 
@@ -96,7 +95,8 @@ class _MapsState extends State<Maps> {
     print("latitude2 = $latitude2");
     print("longitude2 = $longitude2");
 
-    setState(() {});
+    setState(() {
+    });
 
     return "Success";
   }
