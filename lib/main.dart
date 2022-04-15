@@ -52,6 +52,9 @@ class _MapsState extends State<Maps> {
   bool routesUserClick = false;
   int selectedRoutes = 0;
 
+  int estimateBus1 = 0;
+  int estimateBus2 = 0;
+
   @override
   void initState() {
     super.initState();
@@ -330,7 +333,8 @@ class _MapsState extends State<Maps> {
                             ),
                           if (routesToBus)
                             Text(
-                              "Bus 1 = ${calculateDistance(curpos.latitude, curpos.longitude, latitude, longitude)}",
+                              "Bus 1 = ${calculateDistance(curpos.latitude, curpos.longitude, latitude, longitude)}"
+                                  " ($estimateBus1 Menit)",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -338,7 +342,8 @@ class _MapsState extends State<Maps> {
                             ),
                           if (routesToBus)
                             Text(
-                              "Bus 2 = ${calculateDistance(curpos.latitude, curpos.longitude, latitude2, longitude2)}",
+                              "Bus 2 = ${calculateDistance(curpos.latitude, curpos.longitude, latitude2, longitude2)}"
+                                  " ($estimateBus2 Menit)",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
@@ -381,6 +386,9 @@ class _MapsState extends State<Maps> {
   String calculateDistance(lat1, lon1, lat2, lon2) {
     double distance =
         Geolocator.distanceBetween(lat1, lon1, lat2, lon2).ceilToDouble();
+
+    estimateBus1 = distance~/(20000/60);
+    estimateBus2 = distance~/(20000/60);
     if (distance >= 1000) {
       return '${distance / 1000} Kilometer';
     }
